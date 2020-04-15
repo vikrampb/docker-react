@@ -1,0 +1,9 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t vikrampb/docker-react -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true vikrampb/docker-react npm run test -- --coverage
